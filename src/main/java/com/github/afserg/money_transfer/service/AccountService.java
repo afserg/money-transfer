@@ -27,12 +27,12 @@ public class AccountService {
                 .orElseThrow(() -> new AccountNotFoundException(number));
     }
 
-    void increaseAmount(final String number, final long increase) {
+    public void increaseAmount(final String number, final long increase) {
         Account account = findAccount(number);
         account.setAmount(account.getAmount() + increase);
     }
 
-    void decreaseAmount(final String number, final long decrease) {
+    public void decreaseAmount(final String number, final long decrease) {
         Account account = findAccount(number);
         if (account.getAmount() >= decrease) {
             account.setAmount(account.getAmount() - decrease);
