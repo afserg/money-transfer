@@ -5,14 +5,12 @@ import com.github.afserg.money_transfer.exception.AccountNotFoundException;
 import com.github.afserg.money_transfer.exception.InsufficientFundsException;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
-@Singleton
 public class AccountService {
-    @PersistenceContext(unitName = "money-transfer")
+    @Inject
     private EntityManager em;
 
     @PostConstruct
@@ -41,7 +39,7 @@ public class AccountService {
         }
     }
 
-    private void createAccount(String number, long amount) {
+    public void createAccount(String number, long amount) {
         Account account = new Account();
         account.setNumber(number);
         account.setAmount(amount);

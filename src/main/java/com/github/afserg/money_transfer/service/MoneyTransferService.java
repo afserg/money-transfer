@@ -1,34 +1,33 @@
 package com.github.afserg.money_transfer.service;
 
+import com.github.afserg.money_transfer.entity.locker.EntityLock;
+import com.github.afserg.money_transfer.entity.locker.EntityLocker;
 import com.github.afserg.money_transfer.exception.NegativeOrZeroAmountException;
 
-import javax.annotation.Resource;
-import javax.ejb.Singleton;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
-import javax.transaction.UserTransaction;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-@Singleton
-@TransactionManagement(TransactionManagementType.BEAN)
 public class MoneyTransferService {
-    @Resource
-    private UserTransaction utx;
+    //private UserTransaction utx;
+    private final EntityLocker<String> locker = new EntityLocker<>();
     @Inject
     private AccountService accountService;
 
-    public void transfer(final String from, final String to, final long amount) throws Exception {
+    public void transfer(final String from, final String to, final long amount) {
         if (amount <= 0) throw new NegativeOrZeroAmountException();
 
+        EntityLock lockFrom = locker.lock(from);
+        EntityLock lockTo = locker.lock(to);
+
+        lockFrom.lock();
+        lockTo.lock();
         try {
-            utx.begin();
             accountService.decreaseAmount(from, amount);
             accountService.increaseAmount(to, amount);
-            utx.commit();
-
-        } catch (Exception ex) {
-            utx.rollback();
-            throw ex;
+        } finally {
+            lockFrom.unlock();
+            lockTo.unlock();
         }
     }
 
