@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Account {
     @Id
     private String number;
-    private Long amount;
+    private long amount;
 
     public String getNumber() {
         return number;
@@ -17,11 +17,11 @@ public class Account {
         this.number = number;
     }
 
-    public Long getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 }
