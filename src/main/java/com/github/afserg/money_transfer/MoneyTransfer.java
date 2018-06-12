@@ -1,7 +1,5 @@
 package com.github.afserg.money_transfer;
 
-import com.github.afserg.money_transfer.entity.locker.EntityLock;
-import com.github.afserg.money_transfer.entity.locker.EntityLocker;
 import com.github.afserg.money_transfer.entity.manager.EmfFactory;
 import com.github.afserg.money_transfer.service.AccountService;
 import com.github.afserg.money_transfer.entity.manager.EmFactory;
