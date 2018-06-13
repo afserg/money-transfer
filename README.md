@@ -1,13 +1,13 @@
 # money-transfer
 Java test for Revolut
 
-Runs as standalone application using wilfly swarm.
+RESTful service for money transfer between accounts.
 
-Provides REST api for money transfer between two accounts.
+Runs as standalone application.
 
 Uses H2 database as persistence storage. For the sake of this test data base has two initial accounts with numbers "123" and "234" and initial amount of 1000.
 
-After start service available at http://localhost:8080/revolut/money/transfer
+After start service available at http://localhost:8080/money/transfer
 
 It accepts POST requests with JSON as a parameter and returns JSON result.
 
