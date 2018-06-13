@@ -5,8 +5,6 @@ import com.github.afserg.money_transfer.entity.locker.EntityLocker;
 import com.github.afserg.money_transfer.exception.NegativeOrZeroAmountException;
 
 import javax.inject.Inject;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class MoneyTransferService {
     //private UserTransaction utx;
