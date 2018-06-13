@@ -7,7 +7,6 @@ import com.github.afserg.money_transfer.exception.NegativeOrZeroAmountException;
 import javax.inject.Inject;
 
 public class MoneyTransferService {
-    //private UserTransaction utx;
     private final EntityLocker<String> locker = new EntityLocker<>();
     @Inject
     private AccountService accountService;
