@@ -17,9 +17,9 @@ import javax.persistence.EntityManagerFactory;
 import java.net.URI;
 
 public class MoneyTransfer {
-    public static final String BASE_URI = "http://localhost:8080/";
+    static final String BASE_URI = "http://localhost:8080/";
 
-    public static HttpServer startServer() {
+    static HttpServer startServer() {
         final ResourceConfig rc = new ResourceConfig().packages("com.github.afserg.money_transfer");
         rc.register(new AbstractBinder() {
             @Override
