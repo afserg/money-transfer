@@ -6,7 +6,6 @@ import java.util.function.Supplier;
  * Class that provides locking utilities for arbitrary count of entities
  * distinguished by id.
  *
- * @author Sergey N. Fedorov
  * @param <Id> type of entity id
  */
 public class EntityLocker<Id> {
