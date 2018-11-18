@@ -1,4 +1,4 @@
-package com.github.afserg.money_transfer.entity.locker;
+package com.github.afserg.entitylocker;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;

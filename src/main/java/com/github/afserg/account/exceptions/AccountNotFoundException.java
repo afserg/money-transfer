@@ -1,4 +1,4 @@
-package com.github.afserg.money_transfer.exception;
+package com.github.afserg.account.exceptions;
 
 public class AccountNotFoundException extends RuntimeException {
     public AccountNotFoundException(String accountNumber) {

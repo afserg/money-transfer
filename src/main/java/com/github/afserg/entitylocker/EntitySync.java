@@ -1,4 +1,4 @@
-package com.github.afserg.money_transfer.entity.locker;
+package com.github.afserg.entitylocker;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +9,9 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
-class EntitySync<Id> extends AbstractQueuedSynchronizer {
+public class EntitySync<Id> extends AbstractQueuedSynchronizer {
 
-    static class LockState {
+    private static class LockState {
 
         final Thread thread = Thread.currentThread();
         volatile int lockCount = 1;
@@ -21,7 +21,7 @@ class EntitySync<Id> extends AbstractQueuedSynchronizer {
         }
     }
 
-    static class ThreadState<Id> {
+    private static class ThreadState<Id> {
 
         Id id = null;
         Map<Id, LockState> acquired = new HashMap<>();
@@ -34,7 +34,7 @@ class EntitySync<Id> extends AbstractQueuedSynchronizer {
     final ThreadLocal<ThreadState<Id>> state = ThreadLocal.withInitial(ThreadState::new);
     final AtomicReference<Map<Id, LockState>> locks = new AtomicReference<>(new HashMap<>());
 
-    EntitySync(int escalationThreshold) {
+    public EntitySync(int escalationThreshold) {
         this.escalationThreshold = escalationThreshold;
     }
 

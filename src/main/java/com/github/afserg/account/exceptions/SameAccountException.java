@@ -1,4 +1,4 @@
-package com.github.afserg.money_transfer.exception;
+package com.github.afserg.account.exceptions;
 
 public class SameAccountException extends RuntimeException {
     public SameAccountException() {
