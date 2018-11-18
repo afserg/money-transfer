@@ -6,7 +6,7 @@ RESTful service for money transfer between accounts.
 Runs as standalone application.
 
 Uses H2 in-memory database as persistence storage.
-For the sake of this test data base has two initial accounts with numbers "123" and "234" with initial amount of 1000 each.
+For the sake of this test data base has two accounts "123" and "234" with initial amount of 1000 each.
 
 After start service available at http://localhost:8081/money/transfers
 
